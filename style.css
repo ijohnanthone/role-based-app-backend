@@ -1,0 +1,175 @@
+/* Page mechanics: hide all views, then show the active one. */
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+/* Role visibility filters controlled by body classes. */
+body.not-authenticated .role-logged-in {
+    display: none !important;
+}
+
+body.not-authenticated .role-admin {
+    display: none !important;
+}
+
+body.is-authenticated .role-public {
+    display: none !important;
+}
+
+body.is-authenticated:not(.is-admin) .role-admin {
+    display: none !important;
+}
+
+.nav-link {
+    color: #fff !important;
+}
+
+.nav-link:hover {
+    opacity: 0.8;
+}
+
+.nav-link.route-active {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.brand-text {
+    margin-right: 1rem;
+}
+
+.nav-zones {
+    gap: 0.25rem;
+}
+
+#registerForm,
+#loginForm,
+.panel-box {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.panel-box {
+    position: relative;
+}
+
+.profile-edit-popover {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: min(540px, calc(100% - 24px));
+    background: linear-gradient(180deg, #ffffff 0%, #f6f9fc 100%);
+    border: 1px solid #dbe5ef;
+    border-radius: 14px;
+    box-shadow: 0 28px 56px rgba(0, 0, 0, 0.2), 0 0 0 9999px rgba(11, 24, 45, 0.35);
+    padding: 18px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, -48%) scale(0.96);
+    pointer-events: none;
+    transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s ease;
+    z-index: 1060;
+}
+
+.profile-edit-popover.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: auto;
+}
+
+.profile-edit-popover h6 {
+    color: #0f2b46;
+    font-weight: 700;
+}
+
+@media (max-width: 767px) {
+    .profile-edit-popover {
+        width: calc(100% - 20px);
+        padding: 14px;
+    }
+}
+
+#successMessage {
+    display: none;
+}
+
+#verifyInlineBox {
+    display: none;
+}
+
+#appToastContainer.toast-pos-top-right {
+    top: 0.75rem !important;
+    right: 0.75rem !important;
+    left: auto !important;
+    transform: none !important;
+}
+
+#appToastContainer.toast-pos-top-center {
+    top: 0.9rem !important;
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+}
+
+#appToastContainer .toast {
+    min-width: 280px;
+    max-width: 520px;
+    border-radius: 12px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+#appToastContainer.toast-pos-top-center .toast {
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(2px);
+    text-align: center;
+}
+
+/* Keep long data tables usable without stretching the whole page. */
+#requestsSection .table-responsive,
+#employeesSection .table-responsive,
+#accountsSection .table-responsive,
+#departmentsSection .table-responsive {
+    max-height: 320px;
+    overflow-y: auto;
+    border-radius: 8px;
+}
+
+#requestsSection table thead th,
+#employeesSection table thead th,
+#accountsSection table thead th,
+#departmentsSection table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: #f1f3f5;
+}
+
+.field-error {
+    color: #b02a37;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+    min-height: 1em;
+}
+
+.table-empty-row td {
+    text-align: center;
+    color: #6c757d;
+    font-style: italic;
+    padding: 1rem 0.75rem;
+}
+
+#requestsSection .request-actions-cell {
+    white-space: nowrap;
+}
+
+#requestsSection .request-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
